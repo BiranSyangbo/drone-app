@@ -1,7 +1,6 @@
 package com.musala.drones.controller;
 
 import com.musala.drones.dto.DroneDto;
-import com.musala.drones.entity.Drone;
 import com.musala.drones.entity.State;
 import com.musala.drones.service.DroneService;
 import jakarta.validation.Valid;
@@ -30,7 +29,7 @@ public class DronesController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DroneDto> getDroneById(@PathVariable("id") long id) {
-        return ResponseEntity.ok(droneService.findById(id));
+        return ResponseEntity.ok(droneService.getById(id));
     }
 
     @GetMapping("/list")
@@ -42,10 +41,5 @@ public class DronesController {
     public ResponseEntity<String> deleteDrone(@PathVariable("id") long id) {
         droneService.delete(id);
         return ResponseEntity.ok("Delete Successfully");
-    }
-
-    @GetMapping("/{id}/{state}")
-    public ResponseEntity<DroneDto> checkDroneState(@PathVariable("id") long id, @PathVariable("state") State state) {
-        return null;
     }
 }

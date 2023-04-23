@@ -33,4 +33,11 @@ public class MedicationServiceImpl implements MedicationService {
                 .collect(Collectors.toList());
         medicationRepository.saveAll(medications);
     }
+
+    @Override
+    public List<MedicationDto> getMedicationForDrone(Long droneId) {
+        Drone drone = droneService.findById(droneId);
+        List<Medication> medications = medicationRepository.findAllByDrone(drone);
+        return medicationMapper.entityToDtoList(medications);
+    }
 }

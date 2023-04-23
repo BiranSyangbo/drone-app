@@ -31,16 +31,24 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public DroneDto update(long id, DroneDto drone) {
-        return droneRepository.findById(id)
-                .map(__ -> mapper.entityToDto(droneRepository.save(mapper.dtoToEntity(drone))))
-                .orElseThrow(() -> new ResourceNotFoundException("Drone", id));
+    public DroneDto update(long id, DroneDto droneDto) {
+        if (!droneRepository.existsById(id))
+            throw new ResourceNotFoundException("Drone", id);
+        Drone drone = mapper.dtoToEntity(droneDto);
+        drone.setId(id);
+        return mapper.entityToDto(droneRepository.save(drone));
+
     }
 
     @Override
-    public DroneDto findById(long id) {
+    public DroneDto getById(long id) {
+        return mapper.entityToDto(findById(id));
+    }
+
+
+    @Override
+    public Drone findById(long id) {
         return droneRepository.findById(id)
-                .map(mapper::entityToDto)
                 .orElseThrow(() -> new ResourceNotFoundException("Drone", id));
     }
 

@@ -8,8 +8,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Entity(name = "DRONE")
 @Table(name = "DRONE")
 @Getter

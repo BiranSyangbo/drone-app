@@ -10,11 +10,13 @@ public interface DroneService {
 
     DroneDto update(long id, DroneDto drone);
 
-    DroneDto findById(long id);
+    DroneDto getById(long id);
 
     List<DroneDto> findAllDrones();
 
     void delete(long id);
 
     Drone getAvailabilityDrone(Long droneId, double weight);
+
+    Drone findById(long id);
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface MedicationService {
     void loadMedication(List<MedicationDto> medications, Long droneId);
+
+    List<MedicationDto> getMedicationForDrone(Long droneId);
 }
