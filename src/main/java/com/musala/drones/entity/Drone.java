@@ -1,12 +1,14 @@
 package com.musala.drones.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity(name = "DRONE")
 @Table(name = "DRONE")
@@ -43,9 +45,6 @@ public class Drone {
     @Column(name = "STATE")
     @Enumerated(EnumType.ORDINAL)
     private State state;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "drone")
-    private List<LoadMedication> medicationList;
 
 
 }

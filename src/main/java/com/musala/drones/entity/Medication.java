@@ -30,4 +30,8 @@ public class Medication {
 
     @Column(name = "IMAGE_PATH")
     private String imagePath;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "DRONE_ID")
+    private Drone drone;
 }
