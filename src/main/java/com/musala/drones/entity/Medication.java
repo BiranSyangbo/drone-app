@@ -3,7 +3,11 @@ package com.musala.drones.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity(name = "MEDICATION")
 @Table(name = "MEDICATION")
 public class Medication {
@@ -28,8 +32,8 @@ public class Medication {
     @NotBlank
     private double weight;
 
-    @Column(name = "IMAGE_PATH")
-    private String imagePath;
+    @Column(name = "IMAGE")
+    private String image;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "DRONE_ID")

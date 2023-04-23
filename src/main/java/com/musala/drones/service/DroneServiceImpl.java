@@ -2,6 +2,7 @@ package com.musala.drones.service;
 
 import com.musala.drones.dto.DroneDto;
 import com.musala.drones.entity.Drone;
+import com.musala.drones.exception.DroneNotAvailable;
 import com.musala.drones.exception.ResourceNotFoundException;
 import com.musala.drones.mapper.DroneMapper;
 import com.musala.drones.repository.DroneRepository;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,5 +55,28 @@ public class DroneServiceImpl implements DroneService {
         if (droneRepository.existsById(id))
             droneRepository.deleteById(id);
         throw new ResourceNotFoundException("Drone ", id);
+    }
+
+    @Override
+    public Drone getAvailabilityDrone(Long droneId, double weight) {
+        return droneRepository.findById(droneId)
+                .map(drone -> {
+                    if (drone.getState().isIdle())
+                        throw new DroneNotAvailable("Drone with id:- " + droneId + "  is " + drone.getState());
+                    if (!checkWight(weight, drone.getWeight()))
+                        throw new DroneNotAvailable("Drone with id:- " + droneId + "  weight is greater than" + weight + ">" + drone.getWeight());
+                    if (checkDroneBatteryAvailable(drone.getBatteryCapacity()))
+                        throw new DroneNotAvailable("Drone with id:- " + droneId + "  battery percent is lower than " + drone.getBatteryCapacity() + " < 25");
+                    return drone;
+                })
+                .orElseThrow(() -> new ResourceNotFoundException("Drone", droneId));
+    }
+
+    private boolean checkDroneBatteryAvailable(float batteryPercent) {
+        return batteryPercent > 25;
+    }
+
+    private boolean checkWight(double weight, double droneWeight) {
+        return weight > droneWeight;
     }
 }

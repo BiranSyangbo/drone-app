@@ -37,10 +37,10 @@ public class Drone {
     @NotNull
     private double weight;
 
-    @Column(precision = 4, scale = 2, name = "BATTERY_CAPACITY")
+    @Column(name = "BATTERY_CAPACITY")
     @NotNull
     @Max(100)
-    private BigDecimal batteryCapacity;
+    private float batteryCapacity;
 
     @Column(name = "STATE")
     @Enumerated(EnumType.ORDINAL)

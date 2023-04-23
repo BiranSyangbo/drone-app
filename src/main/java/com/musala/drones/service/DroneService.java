@@ -1,6 +1,7 @@
 package com.musala.drones.service;
 
 import com.musala.drones.dto.DroneDto;
+import com.musala.drones.entity.Drone;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface DroneService {
     List<DroneDto> findAllDrones();
 
     void delete(long id);
+
+    Drone getAvailabilityDrone(Long droneId, double weight);
 }

@@ -9,5 +9,9 @@ public enum State {
     LOADED,
     DELIVERING,
     DELIVERED,
-    RETURNING
+    RETURNING;
+
+    public boolean isIdle() {
+        return this.equals(IDLE);
+    }
 }

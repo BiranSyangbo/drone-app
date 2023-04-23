@@ -29,7 +29,7 @@ public class DroneDto {
     private double weight;
 
     @NotNull
-    private BigDecimal batteryCapacity;
+    private float batteryCapacity;
 
     private State state;
 

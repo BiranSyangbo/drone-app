@@ -45,4 +45,14 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.toList());
         return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), new Date(), errors, request.getDescription(true));
     }
+
+    @ExceptionHandler(DroneNotAvailable.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ErrorMessage handleCustomIssue(DroneNotAvailable ex, WebRequest request) {
+        return new ErrorMessage(
+                HttpStatus.BAD_REQUEST.value(),
+                new Date(),
+                List.of(ex.getMessage()),
+                request.getDescription(false));
+    }
 }
