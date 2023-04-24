@@ -22,7 +22,7 @@ public class Drone {
 
     @Size(max = 100)
     @NotEmpty
-    @Column(length = 100, name = "SERIAL_NUMBER", nullable = false)
+    @Column(length = 100, name = "SERIAL_NUMBER", nullable = false, unique = true)
     private String serial;
 
     @Column(name = "MODEL")

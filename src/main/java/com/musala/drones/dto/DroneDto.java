@@ -9,22 +9,20 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Getter
 @Setter
 public class DroneDto {
 
     private Long id;
 
-    @Size(max = 10)
+    @Size(max = 100)
     @NotEmpty
     private String serial;
 
     @NotNull
     private Model model;
 
-    @Max(100)
+    @Max(500)
     @NotNull
     private double weight;
 

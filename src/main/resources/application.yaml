@@ -8,10 +8,15 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
-#    properties:
-#      hibernate:
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
 #        generate_statistics: true
 
-logging:
-  level:
-    org.hibernate: DEBUG
+#logging:
+#  level:
+#    org.hibernate: DEBUG
+
+

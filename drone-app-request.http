@@ -1,0 +1,36 @@
+###
+POST http://localhost:8090/drone/register
+Content-Type: application/json
+
+{
+  "batteryCapacity": 10.45,
+  "model": "Cruiserweight",
+  "serial": "CRU-221",
+  "state": "LOADING",
+  "weight": 250
+}
+
+###
+GET http://localhost:8090/drone/list
+
+###
+PUT http://localhost:8090/drone/update/1
+Content-Type: application/json
+
+{
+  "serial": "HEV-123",
+  "model": "Heavyweight",
+  "weight": 450.0,
+  "batteryCapacity": 99.0,
+  "state": "LOADED"
+}
+
+###
+GET http://localhost:8090/drone/10
+
+<> 2023-04-24T234225.200.json
+
+
+### Register Medication with drone
+###
+POST http://localhost:8090/medication/1/load
