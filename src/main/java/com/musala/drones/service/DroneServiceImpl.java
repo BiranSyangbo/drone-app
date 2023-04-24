@@ -3,6 +3,7 @@ package com.musala.drones.service;
 import com.musala.drones.dto.DroneDto;
 import com.musala.drones.entity.Drone;
 import com.musala.drones.exception.DroneNotAvailable;
+import com.musala.drones.exception.ResourceAlreadyExist;
 import com.musala.drones.exception.ResourceNotFoundException;
 import com.musala.drones.mapper.DroneMapper;
 import com.musala.drones.repository.DroneRepository;
@@ -26,8 +27,15 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public DroneDto create(DroneDto droneDto) {
+        checkDroneAlreadyExist(droneDto.getSerial());
         Drone drone = droneRepository.save(mapper.dtoToEntity(droneDto));
         return mapper.entityToDto(drone);
+    }
+
+    private void checkDroneAlreadyExist(String serial) {
+        if (droneRepository.findBySerial(serial).isPresent()) {
+            throw new ResourceAlreadyExist("Drone ", serial);
+        }
     }
 
     @Override

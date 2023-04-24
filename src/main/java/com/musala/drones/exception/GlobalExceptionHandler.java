@@ -1,7 +1,6 @@
 package com.musala.drones.exception;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -51,6 +50,16 @@ public class GlobalExceptionHandler {
     public ErrorMessage handleCustomIssue(DroneNotAvailable ex, WebRequest request) {
         return new ErrorMessage(
                 HttpStatus.BAD_REQUEST.value(),
+                new Date(),
+                List.of(ex.getMessage()),
+                request.getDescription(false));
+    }
+
+    @ExceptionHandler(ResourceAlreadyExist.class)
+    @ResponseStatus(value = HttpStatus.CONFLICT)
+    public ErrorMessage handleResourceExistException(ResourceAlreadyExist ex, WebRequest request) {
+        return new ErrorMessage(
+                HttpStatus.CONFLICT.value(),
                 new Date(),
                 List.of(ex.getMessage()),
                 request.getDescription(false));
