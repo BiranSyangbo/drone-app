@@ -1,7 +1,6 @@
 package com.musala.drones.controller;
 
 import com.musala.drones.dto.DroneDto;
-import com.musala.drones.entity.State;
 import com.musala.drones.service.DroneService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
