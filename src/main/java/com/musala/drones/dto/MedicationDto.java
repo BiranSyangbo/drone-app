@@ -20,7 +20,6 @@ public class MedicationDto {
     @Pattern(regexp = "^[A-Z0-9_]*$")
     private String code;
 
-    @NotBlank
     private double weight;
 
     private String image;

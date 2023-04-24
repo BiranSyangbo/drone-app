@@ -38,7 +38,7 @@ cd drone-app
 java -jar target/*.jar
 ```
 
-You can then access Dron App Api here: [http://localhost:8080/](http://localhost:8080/)
+You can then access Dron App Api here: [http://localhost:8090/](http://localhost:8090/)
 
 Or you can run it from Maven directly using the Spring Boot Maven plugin.
 
@@ -49,4 +49,7 @@ Or you can run it from Maven directly using the Spring Boot Maven plugin.
 
 #### Details
 
-To build the application we used the spring boot 3.0.6 version and postgres for the database and JPA for communication with db. 
+To build the application we used the spring boot 3.0.6 version and postgres for the database and JPA for communication with db.
+
+
+To insert the data please use file ``` drone-app-request.http```

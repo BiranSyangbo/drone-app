@@ -1,0 +1,9 @@
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (1, 99, 3, 'HEV-123', 2, 450);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (2, 100, 3, 'HEV-124', 0, 500);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (4, 90, 0, 'Light-124', 0, 100);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (5, 90, 1, 'MID-124', 3, 200);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (6, 90, 2, 'CRU-124', 5, 300);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (8, 90, 3, 'HEV-12', 1, 500);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (10, 80, 0, 'LI-12', 0, 50);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (11, 80, 1, 'MID-12', 2, 150);
+INSERT INTO drone (id, battery_capacity, model, serial_number, state, weight) VALUES (13, 10.45, 2, 'CRU-12', 1, 250);

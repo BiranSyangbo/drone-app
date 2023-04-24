@@ -18,8 +18,6 @@ public class Medication {
     @Column(name = "ID")
     private Long id;
 
-    //    @Pattern("")
-    //TODO regex baki xa
     @Column(name = "NAME")
     @NotEmpty
     private String name;
@@ -29,10 +27,9 @@ public class Medication {
     private String code;
 
     @Column(name = "WEIGHT")
-    @NotBlank
     private double weight;
 
-    @Column(name = "IMAGE")
+    @Column(name = "IMAGE", columnDefinition = "TEXT")
     private String image;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)

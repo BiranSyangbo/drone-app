@@ -71,9 +71,9 @@ public class DroneServiceImpl implements DroneService {
                 .map(drone -> {
                     if (drone.getState().isIdle())
                         throw new DroneNotAvailable("Drone with id:- " + droneId + "  is " + drone.getState());
-                    if (!checkWight(weight, drone.getWeight()))
-                        throw new DroneNotAvailable("Drone with id:- " + droneId + "  weight is greater than" + weight + ">" + drone.getWeight());
-                    if (checkDroneBatteryAvailable(drone.getBatteryCapacity()))
+                    if (checkWight(weight, drone.getWeight()))
+                        throw new DroneNotAvailable("Drone with id:- " + droneId + "  weight is greater than " + weight + ">" + drone.getWeight());
+                    if (!checkDroneBatteryAvailable(drone.getBatteryCapacity()))
                         throw new DroneNotAvailable("Drone with id:- " + droneId + "  battery percent is lower than " + drone.getBatteryCapacity() + " < 25");
                     return drone;
                 })
