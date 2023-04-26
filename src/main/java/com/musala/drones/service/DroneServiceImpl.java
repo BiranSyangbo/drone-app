@@ -77,7 +77,7 @@ public class DroneServiceImpl implements DroneService {
     public Drone getAvailabilityDrone(Long droneId, double weight) {
         return droneRepository.findById(droneId)
                 .map(drone -> {
-                    if (drone.getState().isIdle())
+                    if (!drone.getState().isIdle())
                         throw new DroneNotAvailable("Drone with id:- " + droneId + "  is " + drone.getState());
                     if (checkWight(weight, drone.getWeight()))
                         throw new DroneNotAvailable("Drone with id:- " + droneId + "  weight is greater than " + weight + ">" + drone.getWeight());
