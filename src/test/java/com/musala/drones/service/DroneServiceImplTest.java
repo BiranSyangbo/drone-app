@@ -17,7 +17,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -172,6 +171,6 @@ class DroneServiceImplTest {
         drone.setState(State.LOADED);
         when(droneRepository.findById(drone.getId()))
                 .thenReturn(Optional.of(drone));
-        assertThrows(DroneNotAvailable.class, () -> droneService.getAvailabilityDrone(drone.getId(), 300));
+        assertThrows(DroneNotAvailable.class, () -> droneService.getAvailabilityDrone(drone.getId(), 100));
     }
 }
